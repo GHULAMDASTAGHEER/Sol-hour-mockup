@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
 import { PreviewSwitcher } from "@/components/preview-switcher";
+import { BracketButton } from "@/components/bracket-button";
 
 type GatheringId =
   | "intimate-dinner"
@@ -60,33 +62,45 @@ export default function HostSetup() {
 
   return (
     <main className="sol-backdrop sol-grain relative isolate flex min-h-screen flex-col">
-      {/* Top wordmark + meta */}
-      <header className="relative z-10 mx-auto flex w-full max-w-[1180px] items-center justify-between px-8 pt-10 sm:pt-12 fade-up">
+      <header className="relative z-10 mx-auto flex w-full max-w-[1240px] items-center justify-between px-6 pt-7 sm:px-10 sm:pt-10 lg:px-16 lg:pt-12 fade-up">
         <Wordmark />
-        <p className="text-[11px] uppercase tracking-[0.32em] text-warm-ink/55">
+        <p className="hidden text-[10.5px] uppercase tracking-[0.36em] text-warm-ink/55 sm:block">
           Tonight · {formattedDate()}
         </p>
       </header>
 
-      {/* Center */}
-      <section className="relative z-10 mx-auto flex w-full max-w-[1180px] flex-1 flex-col justify-center px-8 pt-16 pb-28 sm:pt-20">
-        <div className="max-w-2xl fade-up" style={{ animationDelay: "80ms" }}>
-          <p className="text-[13px] uppercase tracking-[0.32em] text-warm-ink/55">
-            Good evening
-          </p>
-          <h1 className="mt-5 text-[44px] font-light leading-[1.05] tracking-[-0.02em] text-warm-ink sm:text-[58px]">
+      <section className="relative z-10 mx-auto flex w-full max-w-[1240px] flex-1 flex-col justify-center px-6 pt-12 pb-32 sm:px-10 sm:pt-16 lg:px-16">
+        {/* Hero */}
+        <div
+          className="max-w-2xl fade-up"
+          style={{ animationDelay: "80ms" }}
+        >
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden
+              className="h-px w-10 bg-gradient-to-r from-amber via-coral to-sunset"
+            />
+            <p className="text-[10.5px] uppercase tracking-[0.42em] text-warm-ink/55">
+              Step 01 · Tonight
+            </p>
+          </div>
+          <h1 className="mt-5 text-[clamp(34px,4.5vw,58px)] font-light leading-[1.04] tracking-[-0.02em] text-warm-ink">
             The room is{" "}
             <span className="italic font-normal text-sunset">yours.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-[17px] leading-[1.55] text-warm-ink/70">
-            Choose the kind of evening you&rsquo;re hosting. Sol Hour will shape
-            the arc, weave in your guests&rsquo; requests, and let you be present
-            in the room.
+          <p className="mt-5 max-w-xl text-[15.5px] leading-[1.6] text-warm-ink/70">
+            Sol Hour is not background music. It&rsquo;s a ritual. Choose the
+            kind of evening you&rsquo;re hosting and we&rsquo;ll shape the arc,
+            weave in your guests&rsquo; requests, and let you be present in
+            the room.
           </p>
         </div>
 
         {/* Gathering type */}
-        <div className="mt-14 fade-up" style={{ animationDelay: "160ms" }}>
+        <div
+          className="mt-12 fade-up"
+          style={{ animationDelay: "160ms" }}
+        >
           <Label>What kind of gathering</Label>
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {gatherings.map((g) => {
@@ -125,7 +139,10 @@ export default function HostSetup() {
         </div>
 
         {/* Duration */}
-        <div className="mt-12 fade-up" style={{ animationDelay: "240ms" }}>
+        <div
+          className="mt-10 fade-up"
+          style={{ animationDelay: "220ms" }}
+        >
           <Label>How long</Label>
           <div className="mt-5 flex flex-wrap gap-3">
             {durations.map((d) => {
@@ -151,38 +168,59 @@ export default function HostSetup() {
           </div>
         </div>
 
+        {/* DJ Avatar CTA — feature highlight */}
+        <Link
+          href="/host/avatar"
+          className="group mt-10 flex items-center gap-5 overflow-hidden rounded-3xl border border-warm-ink/15 bg-gradient-to-r from-cream/90 via-cream/80 to-cream/70 p-5 backdrop-blur-md transition-all duration-500 hover:border-warm-ink/30 hover:shadow-[0_18px_50px_-22px_rgba(180,58,42,0.45)] fade-up"
+          style={{ animationDelay: "280ms" }}
+        >
+          <DJBadge />
+          <div className="min-w-0 flex-1">
+            <p className="text-[10.5px] uppercase tracking-[0.36em] text-sunset">
+              Step 02 · The Host
+            </p>
+            <p className="mt-1.5 text-[16.5px] font-medium tracking-tight text-warm-ink">
+              You are the DJ tonight.
+            </p>
+            <p className="mt-1 text-[13px] leading-[1.55] text-warm-ink/60">
+              Upload a photo, add a prop, see yourself on the TV — quietly,
+              in the corner, never the focal point.
+            </p>
+          </div>
+          <span
+            aria-hidden
+            className="hidden items-center gap-2 pr-3 text-warm-ink/40 transition-all duration-300 group-hover:text-sunset sm:flex"
+          >
+            <span className="h-px w-6 bg-current transition-all duration-300 group-hover:w-10" />
+            <span className="text-[16px] leading-none">&rsaquo;</span>
+          </span>
+        </Link>
+
         {/* Summary + CTA */}
         <div
-          className="mt-14 flex flex-col items-start gap-8 border-t border-warm-ink/10 pt-10 sm:flex-row sm:items-end sm:justify-between fade-up"
-          style={{ animationDelay: "320ms" }}
+          className="mt-12 flex flex-col items-start gap-7 border-t border-warm-ink/10 pt-9 sm:flex-row sm:items-end sm:justify-between fade-up"
+          style={{ animationDelay: "360ms" }}
         >
           <div className="max-w-md">
-            <p className="text-[12px] uppercase tracking-[0.32em] text-warm-ink/50">
+            <p className="text-[10.5px] uppercase tracking-[0.42em] text-warm-ink/50">
               Tonight&rsquo;s arc
             </p>
-            <p className="mt-3 text-[18px] leading-[1.5] text-warm-ink/85">
-              A {durationWords(duration)} {current.name.toLowerCase()} for about{" "}
-              <span className="text-warm-ink">{guestEstimate} friends</span>.
-              <span className="block mt-1 text-warm-ink/55">
+            <p className="mt-3 text-[17px] leading-[1.5] text-warm-ink/85">
+              A {durationWords(duration)} {current.name.toLowerCase()} for
+              about <span className="text-warm-ink">{guestEstimate} friends</span>.
+              <span className="mt-1 block text-warm-ink/55">
                 {current.whisper}
               </span>
             </p>
           </div>
 
-          <button
-            type="button"
-            className="group inline-flex items-center gap-3 rounded-full bg-warm-ink px-8 py-4 text-[15px] font-medium tracking-tight text-cream transition-all duration-300 hover:bg-sunset"
-          >
+          <BracketButton href="/tv" tone="sunset" size="md">
             Begin Sol Hour
-            <span
-              aria-hidden
-              className="h-px w-8 bg-cream transition-all duration-300 group-hover:w-12"
-            />
-          </button>
+          </BracketButton>
         </div>
       </section>
 
-      <footer className="relative z-10 mx-auto flex w-full max-w-[1180px] items-center justify-between px-8 pb-24 text-[11px] text-warm-ink/45">
+      <footer className="relative z-10 mx-auto flex w-full max-w-[1240px] items-center justify-between px-6 pb-28 text-[10.5px] uppercase tracking-[0.32em] text-warm-ink/45 sm:px-10 lg:px-16">
         <span>Apple Music · connected</span>
         <span>Output · Living Room TV</span>
       </footer>
@@ -194,9 +232,54 @@ export default function HostSetup() {
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-warm-ink/55">
+    <p className="text-[10.5px] font-medium uppercase tracking-[0.42em] text-warm-ink/55">
       {children}
     </p>
+  );
+}
+
+function DJBadge() {
+  return (
+    <div className="relative h-[68px] w-[68px] shrink-0 sm:h-[78px] sm:w-[78px]">
+      <div
+        aria-hidden
+        className="absolute -inset-2 rounded-full bg-gradient-to-br from-amber/35 via-coral/25 to-sunset/15 blur-md"
+      />
+      <div className="relative h-full w-full overflow-hidden rounded-full border border-warm-ink/15 shadow-[0_6px_24px_-12px_rgba(180,58,42,0.5)]">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-br from-[#ffdcb8] via-[#f0a06f] to-[#a83a26]"
+        />
+        <svg
+          viewBox="0 0 120 36"
+          className="absolute left-1/2 top-1/2 w-[78%] -translate-x-1/2 -translate-y-1/2"
+          aria-hidden
+        >
+          <defs>
+            <linearGradient id="djLens" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#2a1810" />
+              <stop offset="100%" stopColor="#0e0805" />
+            </linearGradient>
+          </defs>
+          <rect x="6" y="6" width="44" height="24" rx="12" fill="url(#djLens)" />
+          <rect
+            x="70"
+            y="6"
+            width="44"
+            height="24"
+            rx="12"
+            fill="url(#djLens)"
+          />
+          <path
+            d="M50 16 Q60 9 70 16"
+            stroke="#2a1810"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+    </div>
   );
 }
 

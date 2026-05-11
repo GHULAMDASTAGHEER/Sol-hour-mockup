@@ -1,4 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
+
+type Variant = "ink" | "cream" | "orange";
+
+const variantSrc: Record<Variant, string> = {
+  ink: "/logos/black.png",
+  cream: "/logos/white.png",
+  orange: "/logos/orange.png",
+};
+
+const sizePx: Record<"sm" | "md" | "lg", { w: number; h: number }> = {
+  sm: { w: 92, h: 22 },
+  md: { w: 118, h: 28 },
+  lg: { w: 168, h: 40 },
+};
 
 export function Wordmark({
   size = "md",
@@ -7,47 +22,34 @@ export function Wordmark({
   asLink = true,
 }: {
   size?: "sm" | "md" | "lg";
-  tone?: "ink" | "cream";
+  tone?: Variant;
   href?: string;
   asLink?: boolean;
 }) {
-  const dot = size === "lg" ? "h-7 w-7" : size === "sm" ? "h-5 w-5" : "h-6 w-6";
-  const text =
-    size === "lg"
-      ? "text-[15px]"
-      : size === "sm"
-        ? "text-[11px]"
-        : "text-[13px]";
-  const color = tone === "cream" ? "text-cream" : "text-warm-ink";
-  const disc =
-    tone === "cream" ? "bg-cream/15 backdrop-blur" : "bg-cream/70 backdrop-blur";
+  const { w, h } = sizePx[size];
+  const src = variantSrc[tone];
 
   const inner = (
-    <>
-      <span
-        className={`relative flex ${dot} items-center justify-center`}
-        aria-hidden
-      >
-        <span className="absolute inset-0 rounded-full bg-gradient-to-br from-amber via-coral to-sunset" />
-        <span className={`absolute inset-[3px] rounded-full ${disc}`} />
-      </span>
-      <span
-        className={`${text} ${color} font-medium uppercase tracking-[0.28em]`}
-      >
-        Sol Hour
-      </span>
-    </>
+    <Image
+      src={src}
+      alt="Sol Hour"
+      width={w}
+      height={h}
+      priority
+      className="select-none"
+      style={{ width: w, height: "auto" }}
+    />
   );
 
   if (!asLink) {
-    return <div className="flex items-center gap-3">{inner}</div>;
+    return <div className="inline-flex items-center">{inner}</div>;
   }
 
   return (
     <Link
       href={href}
       aria-label="Sol Hour — Back to overview"
-      className="group flex items-center gap-3 rounded-full transition-opacity duration-300 hover:opacity-80"
+      className="inline-flex items-center transition-opacity duration-300 hover:opacity-80"
     >
       {inner}
     </Link>

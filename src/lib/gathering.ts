@@ -14,6 +14,24 @@ export type GuestRequest = {
 
 export type Phase = "warm-up" | "peak" | "wind-down";
 
+export type Prop = {
+  id: string;
+  name: string;
+  emoji: string;
+};
+
+export const propLibrary: Prop[] = [
+  { id: "shades", name: "Aviators", emoji: "🕶️" },
+  { id: "hat", name: "Wide-brim hat", emoji: "👒" },
+  { id: "cap", name: "Linen cap", emoji: "🧢" },
+  { id: "headphones", name: "Headphones", emoji: "🎧" },
+  { id: "flower", name: "Marigold", emoji: "🌼" },
+  { id: "olive", name: "Olive sprig", emoji: "🫒" },
+  { id: "saffron", name: "Saffron", emoji: "✨" },
+  { id: "sun", name: "Sun", emoji: "☀️" },
+  { id: "none", name: "No prop", emoji: "—" },
+];
+
 export const gathering = {
   hostFirstName: "Maya",
   gatheringName: "Slow Burn",
