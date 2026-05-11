@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+/** Editorial display — aligned with leonysol.com Sol Hour page */
+const solDisplay = Cormorant_Garamond({
+  variable: "--font-sol-display",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -23,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} h-full antialiased`}
+      className={`${manrope.variable} ${solDisplay.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-cream text-warm-ink">

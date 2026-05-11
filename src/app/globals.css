@@ -17,6 +17,11 @@
   /* Late-phase cool accent (wind down) */
   --color-dusk: #6b6890;
 
+  /* León Y Sol Sol Hour page — dark / gold editorial */
+  --color-sol-gold: #c9a45c;
+  --color-sol-gold-soft: #e8d4b0;
+  --color-sol-black: #050505;
+
   /* Semantic */
   --color-background: var(--color-cream);
   --color-foreground: var(--color-warm-ink);
@@ -39,6 +44,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "ss01", "cv11";
+}
+
+/* Serif display for Sol Hour marketing hero (leonysol.com aesthetic) */
+.font-sol-display {
+  font-family: var(--font-sol-display), ui-serif, Georgia, "Times New Roman", serif;
 }
 
 /* Golden hour ambient backdrop — used on hero surfaces */
@@ -92,6 +102,63 @@ body {
 ::selection {
   background: var(--color-amber);
   color: var(--color-warm-ink);
+}
+
+/* Overview hero — near-black base + clear golden-hour wash (matches “color mix is good” + leonysol mood) */
+.sol-overview-backdrop {
+  background:
+    radial-gradient(
+      ellipse 130% 100% at 50% 4%,
+      rgba(255, 205, 145, 0.48) 0%,
+      rgba(232, 155, 76, 0.26) 28%,
+      rgba(201, 164, 92, 0.09) 46%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 78% 58% at -10% 42%,
+      rgba(255, 224, 200, 0.22) 0%,
+      rgba(255, 190, 140, 0.08) 38%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 88% 72% at 108% 86%,
+      rgba(200, 72, 48, 0.38) 0%,
+      rgba(150, 48, 36, 0.14) 40%,
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse 100% 52% at 50% 108%,
+      rgba(38, 18, 14, 0.72) 0%,
+      transparent 52%
+    ),
+    linear-gradient(168deg, #18120f 0%, #0e0b09 34%, #070504 68%, #030202 100%);
+  background-size: 120% 120%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  animation: overviewGlow 42s ease-in-out infinite alternate;
+}
+
+@keyframes overviewGlow {
+  0% {
+    background-position:
+      50% 2%,
+      0% 40%,
+      100% 90%,
+      50% 100%,
+      0% 0%;
+  }
+  100% {
+    background-position:
+      52% 8%,
+      6% 44%,
+      94% 84%,
+      48% 102%,
+      100% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol-overview-backdrop {
+    animation: none;
+  }
 }
 
 /* TV / Visual Layer — dramatic golden hour at peak */

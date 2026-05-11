@@ -44,91 +44,87 @@ const screens = [
 
 export default function Landing() {
   return (
-    <main className="relative isolate flex min-h-dvh flex-col overflow-hidden bg-cream lg:h-dvh lg:min-h-[720px]">
-      {/* Atmospheric orbs */}
+    <main className="relative isolate flex min-h-dvh flex-col overflow-hidden bg-[#030201] text-[var(--color-sol-gold-soft)] lg:h-dvh lg:min-h-[720px]">
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-48 -bottom-48 h-[640px] w-[640px] rounded-full bg-gradient-to-br from-amber/35 via-coral/25 to-sunset/20 blur-[120px]"
+        className="pointer-events-none absolute inset-0 sol-overview-backdrop"
+      />
+      {/* Header strip: main radial sits above viewport center — this pulls gold into the very top */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[min(340px,45dvh)] bg-gradient-to-b from-[rgba(255,205,165,0.32)] via-[rgba(180,85,48,0.12)] to-transparent"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-40 -top-40 h-[460px] w-[460px] rounded-full bg-gradient-to-br from-peach/40 via-amber/25 to-coral/15 blur-[110px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-px w-[140%] -translate-x-1/2 -translate-y-1/2 rotate-[-2deg] bg-gradient-to-r from-transparent via-warm-ink/8 to-transparent"
+        className="sol-grain pointer-events-none absolute inset-0 z-[2] opacity-[0.09]"
       />
 
-      {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-6 pt-7 sm:px-10 sm:pt-9 lg:px-16 lg:pt-10 fade-up">
-        <Wordmark />
-        <p className="hidden text-[10.5px] uppercase tracking-[0.36em] text-warm-ink/50 sm:block">
-          Mockup preview · v0.2
+        <Wordmark tone="cream" />
+        <p className="hidden text-[10.5px] uppercase tracking-[0.36em] text-white/40 sm:block">
+          Host kit · Mockup preview
         </p>
       </header>
 
-      {/* Center split */}
-      <section className="relative z-10 mx-auto flex w-full max-w-[1320px] flex-1 flex-col items-stretch gap-10 px-6 pt-10 pb-24 sm:px-10 sm:pt-14 lg:flex-row lg:items-center lg:gap-20 lg:px-16 lg:py-0">
-        {/* Left: editorial hero */}
-        <div className="flex flex-1 flex-col gap-7 lg:max-w-[640px]">
+      <section className="relative z-10 mx-auto flex w-full max-w-[1320px] flex-1 flex-col items-stretch gap-12 px-6 pt-10 pb-24 sm:px-10 sm:pt-14 lg:flex-row lg:items-center lg:gap-20 lg:px-16 lg:py-0">
+        <div className="flex flex-1 flex-col gap-8 lg:max-w-[640px]">
           <div
-            className="flex items-center gap-3 fade-up"
+            className="flex flex-col gap-5 fade-up"
             style={{ animationDelay: "60ms" }}
           >
-            <span
-              aria-hidden
-              className="h-px w-10 bg-gradient-to-r from-amber via-coral to-sunset"
-            />
-            <p className="text-[10.5px] uppercase tracking-[0.42em] text-warm-ink/55">
-              Sol Hour Host Kit · Initial direction
+            <h1 className="font-sol-display text-[clamp(42px,5vw,64px)] font-light leading-[1.02] tracking-[-0.02em] text-[var(--color-sol-gold)]">
+              Sol Hour
+            </h1>
+            <p className="max-w-lg text-[clamp(17px,1.9vw,21px)] font-light leading-[1.55] text-white/78">
+              That moment when the light turns golden, the day lets go, and the
+              people who matter are within arm&rsquo;s reach.
+            </p>
+            <p className="text-[10.5px] font-medium uppercase tracking-[0.38em] text-[var(--color-sol-gold)]/85">
+              Every Thursday · Every city · For people who show up
             </p>
           </div>
 
-          <h1
-            className="text-[clamp(28px,3.1vw,42px)] font-light leading-[1.08] tracking-[-0.018em] text-warm-ink fade-up"
-            style={{ animationDelay: "120ms" }}
-          >
-            Sol Hour is not a happy hour.
-            <br />
-            <span className="italic font-normal text-sunset">
-              It&rsquo;s a pause. A ritual.
-            </span>
-          </h1>
-
-          <p
-            className="max-w-md text-[14.5px] leading-[1.6] text-warm-ink/65 fade-up"
-            style={{ animationDelay: "200ms" }}
-          >
-            Four surfaces, one feeling. Where the host shapes the arc, becomes
-            the DJ in the room, lets guests pour in their requests, and lets
-            the golden hour fill the screen.
-          </p>
-
-          <div
-            className="flex items-center gap-5 pt-1 fade-up"
-            style={{ animationDelay: "260ms" }}
-          >
-            <BracketButton href="/host" tone="ink" size="md">
+          <div className="fade-up" style={{ animationDelay: "120ms" }}>
+            <BracketButton href="/host" tone="gold" size="md">
               Discover the ritual
             </BracketButton>
-            <span
-              aria-hidden
-              className="hidden h-px w-12 bg-warm-ink/15 sm:block"
-            />
-            <p className="hidden text-[10px] uppercase tracking-[0.38em] text-warm-ink/45 sm:block">
-              For people who show up
+          </div>
+
+          <div
+            className="flex max-w-xl flex-col gap-4 border-t border-white/10 pt-8 fade-up"
+            style={{ animationDelay: "180ms" }}
+          >
+            <h2 className="font-sol-display text-[clamp(26px,2.8vw,34px)] font-light leading-[1.12] text-[var(--color-sol-gold)]">
+              Sol Hour is not a happy hour.
+            </h2>
+            <p className="text-[14.5px] leading-[1.65] text-white/58">
+              It&rsquo;s a pause. A ritual. The moment between the last thing you
+              had to do and the first person you wanted to see. It&rsquo;s the
+              golden-hour gathering — that window when the light is perfect, the
+              conversation gets real, and the drink in your hand was poured with
+              intention.
+            </p>
+            <p className="text-[13px] leading-[1.6] text-white/45">
+              Four surfaces in this preview — where the host shapes the arc,
+              becomes the DJ in the room, lets guests pour in their requests, and
+              lets the golden hour fill the screen.
             </p>
           </div>
         </div>
 
-        {/* Right: 4 compact cards */}
-        <div className="flex w-full shrink-0 flex-col gap-2.5 lg:w-[440px]">
+        <div className="flex w-full shrink-0 flex-col gap-2 lg:w-[440px]">
+          <p
+            className="mb-1 text-[10px] uppercase tracking-[0.32em] text-white/35 fade-up"
+            style={{ animationDelay: "260ms" }}
+          >
+            Experience flow
+          </p>
           {screens.map((s, i) => (
             <Link
               key={s.href}
               href={s.href}
-              className="group relative flex items-center gap-5 overflow-hidden rounded-2xl border border-warm-ink/10 bg-cream/80 p-3 backdrop-blur-md transition-all duration-500 hover:border-warm-ink/25 hover:bg-cream hover:shadow-[0_22px_50px_-22px_rgba(180,58,42,0.4)] fade-up"
-              style={{ animationDelay: `${340 + i * 80}ms` }}
+              className="group relative flex items-center gap-5 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-3 backdrop-blur-md transition-all duration-500 hover:border-[var(--color-sol-gold)]/25 hover:bg-white/[0.06] hover:shadow-[0_22px_50px_-24px_rgba(201,164,92,0.18)] fade-up"
+              style={{ animationDelay: `${300 + i * 70}ms` }}
             >
               <div
                 className={`relative h-[68px] w-[84px] shrink-0 overflow-hidden rounded-xl ${s.gradient}`}
@@ -145,28 +141,25 @@ export default function Landing() {
 
               <div className="min-w-0 flex-1 py-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-medium uppercase tracking-[0.32em] text-warm-ink/40">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.32em] text-white/35">
                     {s.num}
                   </span>
-                  <span
-                    aria-hidden
-                    className="h-px flex-1 bg-warm-ink/10"
-                  />
-                  <span className="text-[9.5px] uppercase tracking-[0.3em] text-warm-ink/45">
+                  <span aria-hidden className="h-px flex-1 bg-white/10" />
+                  <span className="text-[9.5px] uppercase tracking-[0.3em] text-white/40">
                     {s.surface}
                   </span>
                 </div>
-                <p className="mt-1.5 text-[15px] font-medium tracking-tight text-warm-ink">
+                <p className="mt-1.5 text-[15px] font-medium tracking-tight text-[var(--color-sol-gold-soft)]">
                   {s.title}
                 </p>
-                <p className="mt-0.5 truncate text-[11.5px] text-warm-ink/55">
+                <p className="mt-0.5 truncate text-[11.5px] text-white/45">
                   {s.whisper}
                 </p>
               </div>
 
               <span
                 aria-hidden
-                className="flex shrink-0 items-center gap-1 pr-2 text-warm-ink/30 transition-all duration-300 group-hover:text-sunset"
+                className="flex shrink-0 items-center gap-1 pr-2 text-white/25 transition-all duration-300 group-hover:text-[var(--color-sol-gold)]"
               >
                 <span className="h-px w-4 bg-current transition-all duration-300 group-hover:w-7" />
                 <span className="text-[14px] leading-none">&rsaquo;</span>
@@ -176,19 +169,20 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-warm-ink/8 pb-20 sm:pb-0">
-        <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-2 px-6 py-5 text-[10.5px] uppercase tracking-[0.32em] text-warm-ink/55 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
-          <span>Free for hosts · A León Y Sol experience</span>
+      <footer className="relative z-10 border-t border-white/[0.06] pb-20 sm:pb-0">
+        <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-2 px-6 py-5 text-[10.5px] uppercase tracking-[0.32em] text-white/40 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
+          <span className="text-[var(--color-sol-gold)]/70">
+            For people who show up · A León Y Sol experience
+          </span>
           <div className="flex items-center gap-5">
-            <span>Apple Music only · v1</span>
-            <span aria-hidden className="h-px w-3 bg-warm-ink/20" />
-            <span>Closed beta · 50 hosts</span>
+            <span>Apple Music · Host preview</span>
+            <span aria-hidden className="h-px w-3 bg-white/20" />
+            <span>Mockup v0.3</span>
           </div>
         </div>
       </footer>
 
-      <PreviewSwitcher variant="ink" />
+      <PreviewSwitcher variant="cream" />
     </main>
   );
 }

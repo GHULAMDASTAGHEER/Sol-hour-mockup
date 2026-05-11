@@ -6,7 +6,8 @@ type Props = {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
-  tone?: "ink" | "cream" | "sunset";
+  /** `gold` — leonysol.com Sol Hour dark-page accents */
+  tone?: "ink" | "cream" | "sunset" | "gold";
   size?: "sm" | "md";
   className?: string;
   type?: "button" | "submit";
@@ -26,14 +27,18 @@ export function BracketButton({
       ? "text-cream"
       : tone === "sunset"
         ? "text-sunset"
-        : "text-warm-ink";
+        : tone === "gold"
+          ? "text-sol-gold"
+          : "text-warm-ink";
 
   const bracket =
     tone === "cream"
       ? "text-cream/85"
       : tone === "sunset"
         ? "text-sunset/85"
-        : "text-warm-ink/70";
+        : tone === "gold"
+          ? "text-sol-gold/80"
+          : "text-warm-ink/70";
 
   const py =
     size === "sm" ? "py-1.5" : "py-3";
