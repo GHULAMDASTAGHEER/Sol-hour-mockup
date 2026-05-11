@@ -1,12 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 
 type Variant = "ink" | "cream" | "orange";
 
 const variantSrc: Record<Variant, string> = {
-  ink: "/logos/black.png",
-  cream: "/logos/white.png",
-  orange: "/logos/orange.png",
+  ink: "/logos/orange.png?v=3",
+  cream: "/logos/white.png?v=3",
+  orange: "/logos/orange.png?v=3",
 };
 
 const sizePx: Record<"sm" | "md" | "lg", { w: number; h: number }> = {
@@ -30,13 +29,15 @@ export function Wordmark({
   const src = variantSrc[tone];
 
   const inner = (
-    <Image
+    // Using plain <img> to bypass Next.js image optimizer caching
+    // (logo source files were JPEGs from the client; we regenerated PNGs with transparency)
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src={src}
       alt="Sol Hour"
       width={w}
       height={h}
-      priority
-      className="select-none"
+      className="select-none block"
       style={{ width: w, height: "auto" }}
     />
   );
